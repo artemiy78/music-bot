@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  bot:
+    build: .
+    env_file: .env
+    volumes:
+      - ./music_bot.db:/app/music_bot.db
+    restart: always
