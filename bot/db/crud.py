@@ -52,10 +52,11 @@ async def search_users_by_artist(
         select(User).where(
             User.is_registered == True,
             User.telegram_id != exclude_telegram_id,
-            User.artists.ilike(f"%{artist}%"),
         )
     )
-    return result.scalars().all()
+    all_users = result.scalars().all()
+    artist_lower = artist.strip().lower()
+    return [u for u in all_users if artist_lower in u.artists.lower()]
 
 
 async def get_connect_request(
