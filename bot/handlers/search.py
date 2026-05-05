@@ -32,7 +32,7 @@ async def start_search(message: Message, state: FSMContext):
         return
 
     await message.answer(
-        "🔍 Введи имя исполнителя для поиска:\n\nНапример: _Playboi Carty_",
+        "🔍 Введи имя исполнителя для поиска:\n\nНапример: _Playboi Carti_",
         reply_markup=cancel_kb,
         parse_mode="Markdown",
     )
