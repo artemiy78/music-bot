@@ -5,7 +5,13 @@ from aiogram.fsm.state import State, StatesGroup
 
 from bot.db.database import async_session
 from bot.db.crud import get_user_by_telegram_id, update_user
-from bot.keyboards.keyboards import main_menu, cancel_kb, skip_or_cancel_kb, delete_or_cancel_kb, edit_profile_kb
+from bot.keyboards.keyboards import (
+    main_menu,
+    cancel_kb,
+    skip_or_cancel_kb,
+    delete_or_cancel_kb,
+    edit_profile_kb,
+)
 
 router = Router()
 
@@ -53,7 +59,7 @@ async def save_new_artists(message: Message, state: FSMContext):
         await message.answer("Отменено.", reply_markup=main_menu)
         return
 
-    artists_list = [a.strip().title() for a in message.text.split(",") if a.strip()]
+    artists_list = [a.strip() for a in message.text.split(",") if a.strip()]
     if not artists_list:
         await message.answer("Укажи хотя бы одного исполнителя:")
         return

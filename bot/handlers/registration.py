@@ -91,7 +91,7 @@ async def process_artists(message: Message, state: FSMContext):
         await message.answer("Отменено. Напиши /start чтобы начать заново.")
         return
 
-    artists_list = [a.strip().title() for a in message.text.split(",") if a.strip()]
+    artists_list = [a.strip() for a in message.text.split(",") if a.strip()]
     if len(artists_list) < 1:
         await message.answer("Укажи хотя бы одного исполнителя через запятую:")
         return
